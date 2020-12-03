@@ -32,6 +32,10 @@ TODO: Add rationale
 
 TODO: Add rationale
 
+**Further Reading / Prior Art**
+
+- https://twitter.com/swyx/status/1329171738215686145
+
 ### Return early
 
 TODO: Add rationale
