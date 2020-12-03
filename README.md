@@ -1,4 +1,4 @@
-# Engineering Pprotips
+# Engineering Protips
 
 _Got something to add? [Send a PR](https://github.com/magicmark/engineering-protips/pulls)!_
 
