@@ -43,3 +43,6 @@ TODO: Add rationale
 ### Don't try and outsmart the typechecker
 
 TODO: Add rationale
+
+### Read your stack trace. Scroll up.
+
