@@ -46,3 +46,10 @@ TODO: Add rationale
 
 ### Read your stack trace. Scroll up.
 
+### Don't pass functions too many arguments
+
+- **Further Reading / Prior Art**
+
+- http://wiki.c2.com/?TooManyParameters
+
+### Don't pass functions the whole object
