@@ -10,9 +10,7 @@ TODO: Add rationale
 
 Keep the contents of try/catch blocks to a minimum.
 
-#### Example
-
-**Bad**
+**Bad Example**
 
 ```js
 try {
