@@ -100,7 +100,35 @@ something something avoid side effects / global state
 
 TODO: Add rationale
 
-### Re-throw errors
+### Preserve prior stack traces when throwing errors
+
+When throwing a new error from inside a try/catch block, preserve the stack from the caught error.
+
+**Bad Example**
+
+```js
+try {
+  config = readFileSync(configFilePath, 'utf8');
+} catch (e) {
+  throw new Error("Could not read config file - ensure this file exists!");
+}
+```
+
+**Prefer**
+
+```js
+try {
+  config = readFileSync(configFilePath, 'utf8');
+} catch (e) {
+  throw new MultiError([e, "Could not read config file - ensure this file exists!"]);
+}
+```
+
+#### Why?
+
+We don't want to gobble up the stack trace from the caught error as it contains potentially useful information.
+
+In our example, the original stack trace will show the location on disk that we tried to read the config file from. Throwing this information away makes debugging harder.
 
 ### Don't blindly copy/paste code
 
