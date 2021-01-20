@@ -10,9 +10,9 @@ TODO: Add rationale
 
 Keep the contents of try/catch blocks to a minimum.
 
-#### Example**:
+#### Example
 
-**Instead of**:
+**Bad**
 
 ```js
 try {
@@ -31,7 +31,7 @@ try {
 }
 ```
 
-Prefer:
+**Prefer**
 
 ```js
 let config;
@@ -43,7 +43,7 @@ try {
 }
 ```
 
-**Why?**
+#### Why?
 
 There's _lots_ of things could throw inside our original try block. We may accidentally silence and ignore unrelated errors.
 
