@@ -120,7 +120,8 @@ try {
 try {
   config = readFileSync(configFilePath, 'utf8');
 } catch (e) {
-  throw new MultiError([e, "Could not read config file - ensure this file exists!"]);
+  // Print both stack traces
+  throw new MultiError(["Could not read config file - ensure this file exists!", e]);
 }
 ```
 
@@ -129,6 +130,10 @@ try {
 We don't want to gobble up the stack trace from the caught error as it contains potentially useful information.
 
 In our example, the original stack trace will show the location on disk that we tried to read the config file from. Throwing this information away makes debugging harder.
+
+JavaScript libraries to help:
+- https://github.com/joyent/node-verror
+- https://www.npmjs.com/package/aggregate-error
 
 ### Don't blindly copy/paste code
 
