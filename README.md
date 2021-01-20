@@ -49,17 +49,43 @@ There's _lots_ of things could throw inside our original try block. We may accid
 
 ### Limit what you catch
 
+Be specific when catching an error. Rethrow all other errors.
 
-Keeping the contents of the try block minimal means we avoid a giant "catch all" that silences errors we didn't mean to catch.
+**Bad Example**
 
+```js
+try {
+  result = divideNumbers(3, 0);
+} catch (e) {
+  console.error("You can't divide by zero!");
+}
+```
 
-https://gist.github.com/jehugaleahsa/f3c43d41e68a6b4bc73d2d6cbaee876a#within-a-limited-scope
+**Prefer**
 
-(lots of things could throw!)
+```js
+try {
+  result = divideNumbers(3, 0);
+} catch (e) {
+  if (e instanceof DivideByZeroError) {
+    console.error("You can't divide by zero!");
+  } else {
+    throw e;
+  }
+}
+```
 
-I'd just wrap L64.
+#### Why?
 
+Lots of things could throw!
 
+The message displayed to users or recovery logic inside the catch block may only apply to a certain type of error. But the catch block may be triggered with more errors types than you expect! (e.g. Someone accidentally renames the divideNumbers function, and now we're also catching a `ReferenceError`!)
+
+Avoid "catch all" blocks that gobble up errors we didn't intend to catch.
+
+More reading: https://gist.github.com/jehugaleahsa/f3c43d41e68a6b4bc73d2d6cbaee876a#within-a-limited-scope
+
+### Use user-defined error codes
 ### DRY
 
 TODO: Add rationale
@@ -73,6 +99,8 @@ TODO: Add rationale
 something something avoid side effects / global state
 
 TODO: Add rationale
+
+### Re-throw errors
 
 ### Don't blindly copy/paste code
 
